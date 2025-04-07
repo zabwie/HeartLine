@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heartline — Track your healing. Quietly. Honestly.</title>
+  <link rel="stylesheet" href="src/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Nunito&family=Open+Sans&family=Poppins&family=Roboto&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Heartline</h1>
+      <p class="tagline">Track your healing. Quietly. Honestly.</p>
+    </header>
+    
+    <nav>
+      <ul>
+        <li><button id="nav-emotions" class="active">Daily Log</button></li>
+        <li><button id="nav-graph">Mood Graph</button></li>
+        <li><button id="nav-letters">Unsent Letters</button></li>
+        <li><button id="nav-coping">Coping Tools</button></li>
+        <li><button id="nav-settings">Settings</button></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <!-- Daily Emotion Log Section -->
+      <section id="emotions-section" class="active-section">
+        <h2>How are you feeling today?</h2>
+        <div class="emotion-input">
+          <div class="rating-container">
+            <label>Rate your mood (1-10):</label>
+            <div class="rating-slider">
+              <input type="range" min="1" max="10" value="5" id="mood-slider">
+              <div class="rating-value" id="mood-value">5</div>
+            </div>
+          </div>
+          
+          <div class="notes-container">
+            <label for="mood-notes">Notes (optional):</label>
+            <textarea id="mood-notes" placeholder="How are you feeling today? What's on your mind?"></textarea>
+          </div>
+          
+          <button id="save-emotion" class="primary-button">Save Entry</button>
+        </div>
+        
+        <div class="previous-entries">
+          <h3>Previous Entries</h3>
+          <div id="entries-list" class="entries-list">
+            <!-- Entries will be populated here -->
+          </div>
+        </div>
+      </section>
+      
+      <!-- Mood Graph Section -->
+      <section id="graph-section" class="hidden-section">
+        <h2>Your Healing Journey</h2>
+        <div class="graph-controls">
+          <button id="week-view">Week</button>
+          <button id="month-view">Month</button>
+          <button id="all-view" class="active">All Time</button>
+        </div>
+        <div class="graph-container">
+          <canvas id="mood-chart"></canvas>
+        </div>
+        <div class="reflection-container">
+          <h3>AI Reflection</h3>
+          <div id="ai-reflection" class="ai-message">
+            <!-- AI reflection will be shown here -->
+          </div>
+        </div>
+      </section>
+      
+      <!-- Unsent Letters Section -->
+      <section id="letters-section" class="hidden-section">
+        <h2>Letters I'll Never Send</h2>
+        <div class="letters-container">
+          <div class="new-letter">
+            <input type="text" id="letter-recipient" placeholder="To...">
+            <textarea id="letter-content" placeholder="Write your unsent letter here..."></textarea>
+            <div class="letter-options">
+              <label>
+                <input type="checkbox" id="encrypt-letter"> Encrypt this letter
+              </label>
+              <button id="save-letter" class="primary-button">Save Letter</button>
+            </div>
+          </div>
+          
+          <div class="letters-list">
+            <h3>Your Letters</h3>
+            <div id="saved-letters">
+              <!-- Letters will be populated here -->
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Coping Tools Section -->
+      <section id="coping-section" class="hidden-section">
+        <h2>Coping Tools</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>Breathing Timer</h3>
+            <div class="breathing-circle" id="breathing-circle">
+              <div class="circle-text">Start</div>
+            </div>
+            <button id="start-breathing" class="tool-button">Begin</button>
+          </div>
+          
+          <div class="tool-card">
+            <h3>Ground Me</h3>
+            <div id="grounding-tip" class="grounding-tip">
+              Click the button below for a grounding exercise
+            </div>
+            <button id="ground-me" class="tool-button">Ground Me</button>
+          </div>
+          
+          <div class="tool-card">
+            <h3>Safe Space</h3>
+            <textarea id="safe-space" placeholder="Write freely here. This text won't be saved."></textarea>
+            <button id="clear-safe-space" class="tool-button">Clear</button>
+          </div>
+          
+          <div class="tool-card">
+            <h3>Daily Affirmation</h3>
+            <div id="daily-affirmation" class="affirmation">
+              <!-- Daily affirmation will be shown here -->
+            </div>
+            <button id="new-affirmation" class="tool-button">New Affirmation</button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Settings Section -->
+      <section id="settings-section" class="hidden-section">
+        <h2>Settings</h2>
+        <!-- Add this inside the settings-section div -->
+        <div class="settings-container">
+          <h2>App Settings</h2>
+          
+          <!-- Existing settings form -->
+          <div class="settings-form">
+            <div class="setting-group">
+              <h3>Privacy</h3>
+              <div class="setting-item">
+                <label for="app-passcode">App Passcode:</label>
+                <input type="password" id="app-passcode" placeholder="Set a passcode">
+              </div>
+              <div class="setting-item">
+                <label>
+                  <input type="checkbox" id="lock-letters"> Lock letters by default
+                </label>
+              </div>
+            </div>
+            
+            <div class="setting-group">
+              <h3>Notifications</h3>
+              <div class="setting-item">
+                <label>
+                  <input type="checkbox" id="enable-reminders"> Enable reflection reminders
+                </label>
+              </div>
+              <div class="setting-item">
+                <label for="reminder-time">Reminder time:</label>
+                <input type="time" id="reminder-time">
+              </div>
+            </div>
+            
+            <div class="setting-group">
+              <h3>AI Features</h3>
+              <div class="setting-item">
+                <label>
+                  <input type="checkbox" id="enable-ai" checked> Enable AI reflections
+                </label>
+              </div>
+              <div class="setting-item">
+                <label for="ai-model">AI Model:</label>
+                <select id="ai-model">
+                  <option value="local">Local (Ollama)</option>
+                  <option value="none">Disabled</option>
+                </select>
+              </div>
+            </div>
+            
+            <button id="save-settings" class="primary-button">Save Settings</button>
+          </div>
+          
+          <h2>Customize Appearance</h2>
+          <div class="theme-settings">
+            <div class="theme-preview" id="theme-preview">
+              <div class="preview-header">Theme Preview</div>
+              <div class="preview-content">
+                <div class="preview-button">Button</div>
+                <div class="preview-card">
+                  <div class="preview-card-title">Card Title</div>
+                  <div class="preview-card-content">This is how your content will look with the selected theme.</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="theme-controls">
+              <div class="form-group">
+                <label for="primary-color">Primary Color:</label>
+                <input type="color" id="primary-color" class="color-picker">
+              </div>
+              
+              <div class="form-group">
+                <label for="secondary-color">Background Color:</label>
+                <input type="color" id="secondary-color" class="color-picker">
+              </div>
+              
+              <div class="form-group">
+                <label for="accent-color">Accent Color:</label>
+                <input type="color" id="accent-color" class="color-picker">
+              </div>
+              
+              <div class="form-group">
+                <label for="text-color">Text Color:</label>
+                <input type="color" id="text-color" class="color-picker">
+              </div>
+              
+              <div class="form-group">
+                <label for="font-family">Font:</label>
+                <select id="font-family">
+                  <option value="Roboto, sans-serif">Roboto</option>
+                  <option value="'Open Sans', sans-serif">Open Sans</option>
+                  <option value="'Montserrat', sans-serif">Montserrat</option>
+                  <option value="'Lato', sans-serif">Lato</option>
+                  <option value="'Poppins', sans-serif">Poppins</option>
+                  <option value="'Source Sans Pro', sans-serif">Source Sans Pro</option>
+                  <option value="'Nunito', sans-serif">Nunito</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="border-radius">Rounded Corners:</label>
+                <input type="range" id="border-radius" min="0" max="20" value="8">
+              </div>
+              
+              <!-- Add this inside the theme-controls div in the settings section -->
+              <div class="form-group">
+                <label for="container-spacing">Container Spacing:</label>
+                <div class="range-with-value">
+                  <input type="range" id="container-spacing" min="10" max="50" value="25" class="slider">
+                  <span id="container-spacing-value">25px</span>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="container-padding">Container Padding:</label>
+                <div class="range-with-value">
+                  <input type="range" id="container-padding" min="10" max="40" value="25" class="slider">
+                  <span id="container-padding-value">25px</span>
+                </div>
+              </div>
+              
+              <!-- Add this script to update the displayed values -->
+              <script>
+                document.getElementById('container-spacing').addEventListener('input', function() {
+                  document.getElementById('container-spacing-value').textContent = this.value + 'px';
+                  updateThemePreview();
+                });
+                
+                document.getElementById('container-padding').addEventListener('input', function() {
+                  document.getElementById('container-padding-value').textContent = this.value + 'px';
+                  updateThemePreview();
+                });
+              </script>
+              
+              <button id="save-theme" class="primary-button">Save Theme</button>
+            </div>
+          </div>
+          <!-- Replace the theme customization section with this dropdown -->
+          <div class="setting-group">
+            <h3>Theme</h3>
+            <div class="theme-selector">
+              <select id="theme-select" onchange="handleThemeSelection(event)">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+                <option value="eerie">Eerie</option>
+                <option value="ominous">Ominous</option>
+                <option value="scifi">Sci-Fi</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="aesthetic">Aesthetic</option>
+                <option value="kawaii">Kawaii</option>
+                <option value="nature">Nature</option>
+                <option value="ocean">Ocean</option>
+                <option value="minimalist">Minimalist</option>
+              </select>
+            </div>
+          </div>
+          <!-- Add this inside the theme-settings div, before the theme-controls div -->
+          <div class="theme-presets-container">
+            <h3>Theme Presets</h3>
+            <div id="theme-presets" class="theme-presets">
+              <!-- Theme preset buttons will be added here -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <p>Heartline — Your private space to heal</p>
+    </footer>
+  </div>
+  
+  <!-- Add this before the other script tags at the bottom of the file -->
+  <script src="src/js/ai-helper.js"></script>
+  <script src="src/js/emotions.js"></script>
+  <script src="src/js/letters.js"></script>
+  <script src="src/js/reflections.js"></script>
+  <script src="src/js/coping.js"></script>
+  <script src="src/js/settings.js"></script>
+  <script src="src/js/app.js"></script>
+</body>
+</html>

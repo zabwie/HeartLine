@@ -1,0 +1,871 @@
+:root {
+  --primary-color: #7c9eb2;
+  --secondary-color: #f5b7b1;
+  --background-color: #f9f7f7;
+  --text-color: #333;
+  --light-accent: #e8f4f8;
+  --dark-accent: #5d8aa8;
+  --success-color: #a8d5ba;
+  --warning-color: #f8d7da;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Add or update these CSS rules */
+
+body {
+  background-color: var(--secondary-color, #f8f9fa);
+  color: var(--text-color, #343a40);
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  background-color: var(--secondary-color, #f8f9fa);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fix the duplicate :root variables and consolidate them */
+:root {
+  --primary-color: #7c9eb2;
+  --secondary-color: #f8f9fa;
+  --background-color: #f9f7f7;
+  --text-color: #343a40;
+  --light-accent: #e9ecef;
+  --dark-accent: #5d8aa8;
+  --success-color: #a8d5ba;
+  --warning-color: #f8d7da;
+  --font-main: 'Roboto', sans-serif;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+}
+
+/* Update section styling to use theme variables */
+section {
+  background-color: var(--background-color, white);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 30px;
+}
+
+/* Update entry-item styling */
+.entry-item {
+  padding: 15px;
+  border-bottom: 1px solid var(--light-accent);
+  background-color: var(--background-color);
+}
+
+/* Update letter-card styling */
+.letter-card {
+  background-color: var(--light-accent);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+  position: relative;
+  box-shadow: var(--card-shadow);
+}
+
+/* Update tool-card styling */
+.tool-card {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Update preview-card styling */
+.preview-card {
+  background-color: var(--background-color);
+  border-radius: var(--preview-border-radius);
+  padding: 15px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Update form elements to use theme variables */
+textarea, 
+input[type="text"],
+input[type="password"],
+input[type="time"],
+select {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--light-accent);
+}
+
+/* Update the theme presets styling */
+.theme-presets-container {
+  margin-bottom: 20px;
+  background-color: var(--background-color);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.preset-button {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+  box-shadow: var(--card-shadow);
+  border-radius: var(--border-radius);
+}
+
+/* Add specific styles for dark mode */
+body.dark-theme {
+  --background-color: #3d3d3d;
+  --secondary-color: #2d3436;
+}
+
+/* Add specific styles for eerie mode */
+body.eerie-theme {
+  --background-color: #2C3A47;
+  --secondary-color: #182C61;
+}
+
+/* Add specific styles for pastel mode */
+body.pastel-theme {
+  --background-color: #FFF9F9;
+  --secondary-color: #F9F9F9;
+}
+
+/* Add specific styles for minimalist mode */
+body.minimalist-theme {
+  --background-color: #ffffff;
+  --secondary-color: #ffffff;
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--light-accent);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--dark-accent);
+  font-style: italic;
+}
+
+/* Update the nav styles to include a background */
+nav {
+  margin-bottom: 30px;
+  background-color: var(--primary-color);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+nav button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  color: white;
+}
+
+nav button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+nav button.active {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+/* Replace theme customization with theme dropdown */
+.theme-selector {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.theme-selector select {
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--light-accent);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.theme-selector select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Remove the old theme customization styles */
+.theme-settings,
+.theme-preview,
+.theme-controls,
+.theme-presets-container,
+.theme-presets,
+.preset-button,
+.range-with-value {
+  display: none;
+}
+
+main {
+  flex: 1;
+}
+
+section {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 30px;
+}
+
+.hidden-section {
+  display: none;
+}
+
+.active-section {
+  display: block;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+h3 {
+  color: var(--dark-accent);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+/* Emotion Input Styles */
+.emotion-input {
+  margin-bottom: 30px;
+}
+
+.rating-container {
+  margin-bottom: 20px;
+}
+
+.rating-slider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.rating-slider input {
+  flex: 1;
+  height: 10px;
+}
+
+.rating-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  width: 40px;
+  text-align: center;
+}
+
+.notes-container {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  resize: vertical;
+  min-height: 120px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.primary-button:hover {
+  background-color: var(--dark-accent);
+}
+
+/* Previous Entries Styles */
+.entries-list {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: var(--border-radius);
+}
+
+.entry-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.entry-item:last-child {
+  border-bottom: none;
+}
+
+.entry-date {
+  font-weight: bold;
+  color: var(--dark-accent);
+}
+
+.entry-rating {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.entry-header .entry-date {
+  flex: 1;
+}
+
+.entry-header .entry-rating {
+  margin-right: 10px;
+}
+
+.entry-notes {
+  margin-top: 10px;
+  white-space: pre-wrap;
+}
+
+/* Graph Styles */
+.graph-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.graph-controls button {
+  background: none;
+  border: 1px solid var(--primary-color);
+  padding: 8px 15px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.graph-controls button.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.graph-container {
+  height: 400px;
+  margin-bottom: 30px;
+}
+
+.ai-message {
+  background-color: var(--light-accent);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--primary-color);
+  font-style: italic;
+}
+
+/* Letters Styles */
+.new-letter {
+  margin-bottom: 30px;
+}
+
+#letter-recipient {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.letter-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.letters-list {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.letter-card {
+  background-color: var(--light-accent);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.letter-recipient {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.letter-date {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.letter-content {
+  white-space: pre-wrap;
+}
+
+.letter-locked {
+  filter: blur(5px);
+  user-select: none;
+}
+
+.letter-unlock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+/* Coping Tools Styles */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.tool-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.breathing-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--light-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  transition: transform 4s ease-in-out, background-color 4s ease;
+}
+
+.circle-text {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.grounding-tip {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin: 20px 0;
+  background-color: var(--light-accent);
+  border-radius: var(--border-radius);
+}
+
+.tool-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tool-button:hover {
+  background-color: var(--dark-accent);
+}
+
+.affirmation {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin: 20px 0;
+  background-color: var(--light-accent);
+  border-radius: var(--border-radius);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* Settings Styles */
+.settings-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.setting-group {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.setting-group:last-child {
+  border-bottom: none;
+}
+
+.setting-item {
+  margin-bottom: 15px;
+}
+
+.setting-item label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.setting-item input[type="text"],
+.setting-item input[type="password"],
+.setting-item input[type="time"],
+.setting-item select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .letter-options {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Add this to your existing CSS file */
+
+/* Theme customization */
+.theme-settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.theme-preview {
+  flex: 1;
+  min-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  --preview-primary-color: var(--primary-color);
+  --preview-secondary-color: var(--secondary-color);
+  --preview-accent-color: var(--light-accent);
+  --preview-text-color: var(--text-color);
+  --preview-border-radius: var(--border-radius);
+}
+
+.preview-header {
+  background-color: var(--preview-primary-color);
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.preview-content {
+  background-color: var(--preview-secondary-color);
+  color: var(--preview-text-color);
+  padding: 20px;
+  min-height: 200px;
+}
+
+.preview-button {
+  background-color: var(--preview-primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--preview-border-radius);
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.preview-card {
+  background-color: white;
+  border-radius: var(--preview-border-radius);
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.preview-card-title {
+  color: var(--preview-primary-color);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.theme-controls {
+  flex: 1;
+  min-width: 300px;
+}
+
+.color-picker {
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* Add Google Fonts link to your HTML head */
+/* 
+<link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Nunito&family=Open+Sans&family=Poppins&family=Roboto&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+*/
+
+/* Add this to your existing CSS */
+.theme-presets-container {
+  margin-bottom: 20px;
+}
+
+.theme-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.preset-button {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.preset-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Add this to your existing CSS */
+.range-with-value {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.range-with-value .slider {
+  flex: 1;
+}
+
+.range-with-value span {
+  min-width: 45px;
+  text-align: right;
+}
+
+/* Add styles for the entry header and delete button */
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.entry-delete {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.entry-delete:hover {
+  color: #ff5252;
+}
+
+/* Add specific styling for ominous theme delete button */
+body.ominous-theme .entry-delete {
+  color: #8a0029;
+}
+
+body.ominous-theme .entry-delete:hover {
+  color: #ff4d6d;
+  text-shadow: 0 0 5px rgba(255, 77, 109, 0.5);
+}
+
+/* Make sure we have the font-awesome icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* Add specific styles for ominous mode */
+body.ominous-theme {
+  --background-color: #141414;
+  --secondary-color: #0a0a0a;
+  --primary-color: #a30030; /* Darker red */
+  --text-color: #ffffff; /* Pure white for main text */
+  --accent-color: #1e1e1e;
+  --light-accent: #2a2a2a; /* Darker accent for better contrast */
+  --dark-accent: #8a0029; /* Slightly darker red for accents */
+  --card-shadow: 0 5px 15px rgba(163, 0, 48, 0.3);
+  
+  /* Add a subtle background texture */
+  background-image: 
+    linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(20, 20, 20, 0.9)),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0L100,100M100,0L0,100" stroke="rgba(163, 0, 48, 0.05)" stroke-width="0.5"/></svg>');
+  
+  /* Add a subtle pulsing animation to the primary buttons */
+  --pulse-animation: pulse 4s infinite;
+}
+
+body.ominous-theme .primary-button,
+body.ominous-theme .tool-button {
+  animation: var(--pulse-animation);
+}
+
+/* Add text shadow for better contrast in ominous theme */
+body.ominous-theme p,
+body.ominous-theme div,
+body.ominous-theme span,
+body.ominous-theme textarea,
+body.ominous-theme input {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Improve contrast for specific elements in ominous theme */
+body.ominous-theme .letter-date,
+body.ominous-theme .entry-date {
+  color: #ff8fa3; /* Lighter red that's still readable */
+}
+
+body.ominous-theme .letter-content,
+body.ominous-theme .entry-notes,
+body.ominous-theme textarea,
+body.ominous-theme input {
+  color: #ffffff; /* Ensure content is white and readable */
+}
+
+body.ominous-theme h1,
+body.ominous-theme h2,
+body.ominous-theme h3 {
+  color: #ff4d6d; /* Brighter red for headings */
+  text-shadow: 0 0 8px rgba(199, 0, 57, 0.5);
+  letter-spacing: 1px;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(199, 0, 57, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(199, 0, 57, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(199, 0, 57, 0);
+  }
+}
