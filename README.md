@@ -18,7 +18,7 @@ Heartline is a personal emotional tracking and wellness application designed to 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/heartline.git
+git clone https://github.com/zabwie/heartline.git
 cd heartline
 npm install
 npm start
